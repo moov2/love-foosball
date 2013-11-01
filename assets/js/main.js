@@ -1,11 +1,10 @@
 require([
     'jquery',
     'ui/setup',
-    'ui/match',
-    'domain/match'
+    'ui/match'
 ],
 
-function ($, Setup, Match, MatchData) {
+function ($, Setup, Match) {
 
     var ROOT_SELECTOR = '.js-app';
 

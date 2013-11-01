@@ -2,28 +2,28 @@ define([
 	'flight',
 	'handlebars',
 	'ui/timer',
-	'ui/state',
-    'domain/match',
+	'ui/scoreboard',
+    'domain/game',
 	'text!templates/match.hbs'
 ],
 
-function (Flight, Handlebars, Timer, State, MatchData, matchHtml) {
+function (Flight, Handlebars, Timer, Scoreboard, Game, matchHtml) {
 
 	var TIMER_SELECTOR = '.js-timer',
-		STATE_SELECTOR = '.js-state';
+		SCOREBOARD_SELECTOR = '.js-scoreboard';
 
 	function Match() {
 
 		this.template = Handlebars.compile(matchHtml);
 
         this.after('initialize', function() {
-            MatchData.setPlayers(this.attr.players);
+            this.currentGame = new Game({ players: this.attr.players });
 
             this.render();
 
             this.setupTimer();
 
-            this.setupState();
+            this.setupScoreboard();
         });
 
         this.render = function () {
@@ -32,13 +32,13 @@ function (Flight, Handlebars, Timer, State, MatchData, matchHtml) {
 
         this.setupTimer = function () {
         	Timer.attachTo(TIMER_SELECTOR, {
-                matchData: MatchData
+                game: this.currentGame
             });
         };
 
-        this.setupState = function () {
-        	State.attachTo(STATE_SELECTOR, {
-                matchData: MatchData
+        this.setupScoreboard = function () {
+        	Scoreboard.attachTo(SCOREBOARD_SELECTOR, {
+                game: this.currentGame
             });
         };
 	}
