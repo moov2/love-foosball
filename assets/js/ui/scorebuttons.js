@@ -50,6 +50,7 @@ function (Flight, Handlebars, scorebuttonHtml) {
 		this.playerScored = function (scoringPlayer) {
 			this.attr.game.scored(scoringPlayer);
 			this.render();
+			this.trigger('scorebuttons:playerscored', scoringPlayer);
 		};
 	}
 

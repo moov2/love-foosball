@@ -8,6 +8,8 @@
     border: 2px solid $color-white;
     border-radius: $thumbnail-size / 2;
     max-width: $thumbnail-size;
+    display: block;
+    margin-bottom: $base-spacing-unit;
 }
 
 .thumbnail-small {
