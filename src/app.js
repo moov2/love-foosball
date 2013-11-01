@@ -1,10 +1,19 @@
-var express = require('express');
-var app = express();
-var port = 3000;
+var fs = require('fs');
+
+require.extensions['.html'] = function (module, filename) {
+    module.exports = fs.readFileSync(filename, 'utf8');
+};
+
+var express = require('express'),
+	handlebars = require('handlebars'),
+	layout = require('./templates/layout.html'),
+	layoutTemplate = handlebars.compile(layout),
+	app = express(),
+	port = 3000;
+
 
 app.get('/', function (req, res) {
-	var body = 'Hello World';
-	res.send(body);
+	res.send(layoutTemplate());
 });
 
 app.listen(port);
