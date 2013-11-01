@@ -46,6 +46,17 @@ function () {
 
         this.setOrder();
         this.calculateMatchDuration();
+        this.setStartingScores();
+    };
+
+    /**
+     * Sets the starting scores for the players. In the future, pity points will
+     * be awarded based on who lost previous matches.
+     */
+    p.setStartingScores = function () {
+        for (var i = 0; i < this.players.length; i++) {
+            this.players[i].score = 0;
+        }
     };
 
     /**
