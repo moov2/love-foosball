@@ -21,4 +21,5 @@ body {
 .wrap {
     margin: 0 auto;
     max-width: $max-site-width;
+    padding: $base-spacing-unit * 2 $half-base-spacing-unit;
 }

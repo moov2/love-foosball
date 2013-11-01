@@ -5,11 +5,13 @@
  */
 
 .btn {
+    @include box-sizing();
+
     border: 0;
     color: $color-white;
     cursor: pointer;
     display: inline-block;
-    min-width: $base-spacing-unit * 20;
+    min-width: $base-spacing-unit * 15;
     padding: $base-spacing-unit $base-spacing-unit * 2;
     text-align: center;
 }

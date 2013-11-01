@@ -12,9 +12,11 @@
 
     > li {
         @include box-sizing();
+
         cursor: pointer;
         float: left;
         opacity: .1;
+        margin-bottom: $half-base-spacing-unit;
         margin-right: $base-spacing-unit;
         min-width: $thumbnail-size;
 
