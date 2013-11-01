@@ -1,5 +1,5 @@
-require('./setup')
+require('./server/setup')
 
-var site = require('./site');
+var site = require('./server/site');
 
 site.startSite();

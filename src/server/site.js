@@ -20,7 +20,7 @@ p.startSite = function  () {
 		res.send(self.layoutTemplate());
 	});
 
-	this.app.use('/assets', express.static(__dirname + '/assets'));
+	this.app.use('/assets', express.static(__dirname + '/../assets'));
 
 	this.app.listen(config.port);
 
