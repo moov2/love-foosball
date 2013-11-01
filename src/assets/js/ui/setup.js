@@ -27,7 +27,7 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
 
         // now initialize the component
         this.after('initialize', function() {
-            this.on(document, 'playerselection:change', this.validateMatchReady);
+            this.on(document, 'playerselection:change', this.updatedSelectedPlayers);
 
             this.render();
 
@@ -54,6 +54,10 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
          * Dispatches event notifying that the match should start.
          */
         this.startMatch = function () {
+            if (!this.validate()) {
+                return;
+            }
+
             this.trigger('setup:startMatch', { players: this.players });
 
             this.teardown();
@@ -69,15 +73,22 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
          *
          * - Must have at least 2 players.
          */
-        this.validateMatchReady = function (ev, data) {
+        this.updatedSelectedPlayers = function (ev, data) {
             this.players = data.selectedPlayers;
 
-            if (this.players.length < 2) {
+            if (!this.validate()) {
                 this.select('startBtn').addClass(CSS_DISABLED);
             } else {
                 this.select('startBtn').removeClass(CSS_DISABLED);
             }
-        }
+        };
+
+        /**
+         * Validates that the game is ready to start.
+         */
+        this.validate = function () {
+            return this.players.length >= 2;
+        };
     }
 
     return flight.component(Setup);
