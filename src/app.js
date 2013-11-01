@@ -1,21 +1,8 @@
-var fs = require('fs');
-
 require.extensions['.html'] = function (module, filename) {
-    module.exports = fs.readFileSync(filename, 'utf8');
+    module.exports = require('fs').readFileSync(filename, 'utf8');
 };
+var requirejs = require('requirejs');
 
-var express = require('express'),
-	handlebars = require('handlebars'),
-	layout = require('./templates/layout.html'),
-	layoutTemplate = handlebars.compile(layout),
-	app = express(),
-	port = 3000;
+var site = requirejs('site');
 
-
-app.get('/', function (req, res) {
-	res.send(layoutTemplate());
-});
-
-app.listen(port);
-
-console.log('Listening on port ' + port);
+site.startSite();
