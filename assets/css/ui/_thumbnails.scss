@@ -9,3 +9,7 @@
     border-radius: $thumbnail-size / 2;
     max-width: $thumbnail-size;
 }
+
+.thumbnail-small {
+    max-width: ($thumbnail-size / 3) * 2;
+}

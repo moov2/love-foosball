@@ -5,7 +5,7 @@ define([
 	'text!templates/scoreboard.hbs'
 ],
 function (Flight, Handlebars, ScoreButtons, scoreboardHtml) {
-	
+
 	var SCOREBUTTONS_SELECTOR = '.js-score-buttons',
 		PLAYER_QUEUE_SELECTOR = '.js-player-queue';
 
@@ -19,7 +19,16 @@ function (Flight, Handlebars, ScoreButtons, scoreboardHtml) {
 		});
 
 		this.render = function () {
-			this.$node.html(this.template({ players: this.attr.game.players }));
+			var waitingPlayers = [];
+
+			// gets the remaining players after the first two.
+			for (var i = 2; i < this.attr.game.players.length; i++) {
+				waitingPlayers.push(this.attr.game.players[i]);
+			}
+
+			console.log(waitingPlayers);
+
+			this.$node.html(this.template({ players: this.attr.game.players, waitingPlayers: waitingPlayers }));
 		};
 
 		this.setupScorebuttons = function () {

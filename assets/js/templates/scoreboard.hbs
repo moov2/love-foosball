@@ -1,8 +1,12 @@
 
 <div class="js-score-buttons">
-	
-</div>
-
-<div class="js-waiting-players">
 
 </div>
+
+<ul class="icon-list icon-list-small">
+    {{#each waitingPlayers}}
+        <li>
+            <img src="{{photo}}" title="Player: {{name}}" alt="Player: {{name}}" class="thumbnail thumbnail-small" />
+        </li>
+    {{/each}}
+</ul>

@@ -24,3 +24,8 @@
     }
 }
 
+.icon-list-small {
+    > li {
+        min-width: ($thumbnail-size / 3) * 2;
+    }
+}
