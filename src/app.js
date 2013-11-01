@@ -1,9 +1,5 @@
-require.extensions['.html'] = function (module, filename) {
-    module.exports = require('fs').readFileSync(filename, 'utf8');
-};
-var requirejs = require('requirejs');
+require('./setup')
 
-
-var site = requirejs('site');
+var site = require('./site');
 
 site.startSite();

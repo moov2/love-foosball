@@ -1,32 +1,30 @@
-define([
-	'express',
-	'handlebars',
-	'config',
-	'./templates/layout.html'
-],
-function (express, handlebars, Config, layoutHtml) {
+var express = require('express'),
+	handlebars = require('handlebars'),
+	config = require('./config'),
+	layoutHtml = require('./templates/layout.html');
 
-	function Site () {
-		this.initialise();
-	}
+function Site () {
+	this.initialise();
+}
 
-	var p = Site.prototype;
+var p = Site.prototype;
 
-	p.initialise = function () {
-		this.layoutTemplate = handlebars.compile(layoutHtml);
-		this.app = express();
-	};
+p.initialise = function () {
+	this.layoutTemplate = handlebars.compile(layoutHtml);
+	this.app = express();
+};
 
-	p.startSite = function  () {
-		var self = this;
-		this.app.get('/', function (req, res) {
-			res.send(self.layoutTemplate());
-		});
+p.startSite = function  () {
+	var self = this;
+	this.app.get('/', function (req, res) {
+		res.send(self.layoutTemplate());
+	});
 
-		this.app.listen(Config.port);
+	this.app.use('/assets', express.static(__dirname + '/assets'));
 
-		console.log('Listening on port ' + Config.port);
-	};
+	this.app.listen(config.port);
 
-	return new Site();
-});
+	console.log('Listening on port ' + config.port);
+};
+
+module.exports = new Site();

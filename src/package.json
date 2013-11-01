@@ -7,7 +7,6 @@
     "start": "node app"
   },
 	"dependencies": {
-		"requirejs": "2.1.9",
 		"express": "3.4.4",
 		"handlebars": "1.0.12"
 	},
