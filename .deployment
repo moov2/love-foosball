@@ -1,2 +1,2 @@
 [config]
-command = grunt sass
+command = npm install
