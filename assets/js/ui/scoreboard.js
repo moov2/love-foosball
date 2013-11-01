@@ -2,15 +2,20 @@ define([
 	'flight',
 	'handlebars',
 	'ui/scorebuttons',
-	'text!templates/scoreboard.hbs'
+	'text!templates/scoreboard.hbs',
+	'text!templates/waitingplayers.hbs'
 ],
-function (Flight, Handlebars, ScoreButtons, scoreboardHtml) {
+function (Flight, Handlebars, ScoreButtons, scoreboardHtml, waitingPlayersHtml) {
 
-	var SCOREBUTTONS_SELECTOR = '.js-score-buttons',
-		PLAYER_QUEUE_SELECTOR = '.js-player-queue';
+	var SCOREBUTTONS_SELECTOR = '.js-score-buttons';
 
 	function Scoreboard() {
 		this.template = Handlebars.compile(scoreboardHtml);
+		this.templatePlayerQueue = Handlebars.compile(waitingPlayersHtml);
+
+		this.defaultAttrs({
+            playerQueue: '.js-player-queue'
+        });
 
 		this.after('initialize', function () {
 			this.render();
@@ -19,6 +24,14 @@ function (Flight, Handlebars, ScoreButtons, scoreboardHtml) {
 		});
 
 		this.render = function () {
+			this.$node.html(this.template());
+			this.renderPlayerQueue();
+		};
+
+		/**
+		 * Renders the player queue.
+		 */
+		this.renderPlayerQueue = function () {
 			var waitingPlayers = [];
 
 			// gets the remaining players after the first two.
@@ -26,9 +39,7 @@ function (Flight, Handlebars, ScoreButtons, scoreboardHtml) {
 				waitingPlayers.push(this.attr.game.players[i]);
 			}
 
-			console.log(waitingPlayers);
-
-			this.$node.html(this.template({ players: this.attr.game.players, waitingPlayers: waitingPlayers }));
+			this.select('playerQueue').html(this.templatePlayerQueue({ waitingPlayers: waitingPlayers }));
 		};
 
 		this.setupScorebuttons = function () {
