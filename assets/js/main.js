@@ -11,7 +11,6 @@ function ($, Setup, Match) {
     // lets start with the game setup.
     Setup.attachTo(ROOT_SELECTOR);
 
-
     $(document).on('setup:startMatch', function (e, data) {
         Match.attachTo(ROOT_SELECTOR, {
         	players: data.players

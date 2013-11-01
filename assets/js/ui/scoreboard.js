@@ -21,6 +21,8 @@ function (Flight, Handlebars, ScoreButtons, scoreboardHtml, waitingPlayersHtml) 
 			this.render();
 
 			this.setupScorebuttons();
+
+			this.on(document, 'scorebuttons:playerscored', this.renderPlayerQueue);
 		});
 
 		this.render = function () {
