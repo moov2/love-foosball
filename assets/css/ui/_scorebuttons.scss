@@ -15,3 +15,14 @@
  		line-height: $thumbnail-size;
  	}
  }
+
+ .player-score {
+ 	@include border-radius($points-bubble-height/2);
+
+ 	font-size: 0.8em;
+ 	margin: 0 auto;
+ 	background-color: $color-light-grey;
+ 	width: $points-bubble-width;
+	height: $points-bubble-height;
+	line-height: $points-bubble-height;
+ }

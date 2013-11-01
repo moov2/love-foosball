@@ -22,6 +22,7 @@ $max-site-width: 450px;
  */
 
 $color-grey: #333;
+$color-light-grey: #666;
 $color-rose: #e21b5a;
 $color-rose-dark: #9e0c39;
 $color-white: #fbffe3;
@@ -45,3 +46,10 @@ $default-line-height: 1.4;
  */
 
 $thumbnail-size: 80px;
+
+
+/**
+ * Points bubble settings
+ */
+$points-bubble-width: 49px;
+$points-bubble-height: 27px;
