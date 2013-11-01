@@ -10,14 +10,23 @@ function (Flight, Handlebars, scorebuttonHtml) {
 
 		this.defaultAttrs({
             scoreButtonList: '.js-scorebuttons-list',
-            scoreButtonItems: '.js-scorebuttons-list > li'
+            scoreButtonItems: '.js-scorebuttons-list > li',
+            scoreButtonLeft: '.js-left-scorebutton',
+            scoreButtonRight: '.js-right-scorebutton'
         });
 
 		this.after('initialize', function () {
+			this.render();
+
+			this.on('click', { 'scoreButtonLeft': this.scoreButtonLeftClicked });
+			this.on('click', { 'scoreButtonRight': this.scoreButtonRightClicked });
+		});
+
+		this.render = function () {			
 			this.leftPlayer = this.attr.game.players[0];
 			this.rightPlayer = this.attr.game.players[1];
-
-			this.render();
+			
+			this.$node.html(this.template({ leftPlayer: this.leftPlayer, rightPlayer: this.rightPlayer }));
 
 			var contentWidth = 0;
 
@@ -26,10 +35,21 @@ function (Flight, Handlebars, scorebuttonHtml) {
             });
 
             this.select('scoreButtonList').css('width', (contentWidth + 20) + 'px');
-		});
+		};
 
-		this.render = function () {
-			this.$node.html(this.template({ leftPlayer: this.leftPlayer, rightPlayer: this.rightPlayer }));
+		this.scoreButtonRightClicked = function (e) {
+			e.preventDefault();
+			this.playerScored(this.rightPlayer);
+		};
+
+		this.scoreButtonLeftClicked = function (e) {
+			e.preventDefault();
+			this.playerScored(this.leftPlayer);
+		};
+
+		this.playerScored = function (scoringPlayer) {
+			this.attr.game.scored(scoringPlayer);
+			this.render();
 		};
 	}
 
