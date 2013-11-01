@@ -17,7 +17,9 @@
  * LISTS..................... Resets the ul to not show bullet points / have spacing.
  *
  * BUTTONS................... Various buttons.
+ * ICONLIST.................. Circular player icon lists.
  * SELECTABLELIST............ Selectable list.
+ * SCOREBUTTONS.............. The match view score buttons.
  * THUMBNAILS................ Player thumbnails.
  * TEXT...................... Different CSS classes for text.
  */
@@ -45,6 +47,8 @@
 
 
 @import "ui/buttons";
+@import "ui/iconlist";
 @import "ui/selectablelist";
+@import "ui/scorebuttons";
 @import "ui/thumbnails";
 @import "ui/text";

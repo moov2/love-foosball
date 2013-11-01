@@ -1,19 +1,17 @@
 /**
  * -----------------------------------------------------------------------------
- *   $SELECTABLELIST
+ *   $SCOREBUTTONS
  * -----------------------------------------------------------------------------
  */
 
-.selectable-list {
-    @extend .cf;
-    @extend .icon-list;
+ .scorebuttons-list {
+ 	@extend .cf;
+ 	@extend .icon-list;
 
-    > li {
-        opacity: .1;
-    }
+ 	display: block;
 
-    > li.selected {
-        opacity: 1;
-    }
-}
-
+ 	> li {
+ 		text-align: center;
+ 		line-height: $thumbnail-size;
+ 	}
+ }
