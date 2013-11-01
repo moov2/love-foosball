@@ -58,12 +58,12 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
                 return;
             }
 
-            this.trigger('setup:startMatch', { players: this.players });
-
             this.teardown();
             this.$node.empty();
 
             PlayerSelection.teardownAll();
+
+            this.trigger('setup:startMatch', { players: this.players });
         };
 
         /**

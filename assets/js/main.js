@@ -1,9 +1,10 @@
 require([
     'jquery',
-    'ui/setup'
+    'ui/setup',
+    'ui/match'
 ],
 
-function ($, Setup) {
+function ($, Setup, Match) {
 
     var ROOT_SELECTOR = '.js-app';
 
@@ -12,7 +13,6 @@ function ($, Setup) {
 
 
     $(document).on('setup:startMatch', function (e, data) {
-
-        // begin match...
+        Match.attachTo(ROOT_SELECTOR);
     });
 });
