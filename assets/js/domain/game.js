@@ -34,6 +34,21 @@ function () {
     };
 
     /**
+     * Player has scored so the order must be updated so the player who conceeded
+     * moves to the end of the queue.
+     */
+    p.scored = function (player) {
+        var didntScore = (this.players[0] === player) ? this.players[1] : this.players[0];
+
+        // adds a goal to the player.
+        player.score++;
+
+        // remove the player that didn't score and add them to the end.
+        this.players.splice(this.players.indexOf(didntScore), 1);
+        this.players.push(didntScore);
+    };
+
+    /**
      * Sets the order of the current players, this depicts the starting order.
      */
     p.setOrder = function () {
