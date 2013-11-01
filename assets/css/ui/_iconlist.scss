@@ -1,0 +1,25 @@
+/**
+ * -----------------------------------------------------------------------------
+ *   $ICONLIST
+ * -----------------------------------------------------------------------------
+ */
+
+.icon-list {
+    @extend .cf;
+
+    margin: 0 auto;
+    margin-bottom: $base-spacing-unit;
+
+    > li {
+        @include box-sizing();
+        cursor: pointer;
+        float: left;
+        margin-right: $base-spacing-unit;
+        min-width: $thumbnail-size;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
