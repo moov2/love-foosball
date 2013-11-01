@@ -11,5 +11,10 @@ function () {
 
     var p = Match.prototype = {};
 
+    p.setPlayers = function (players) {
+    	this.players = players;
+    	//setup match starting time, pity points etc
+    };
+
     return new Match();
 });

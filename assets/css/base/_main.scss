@@ -17,3 +17,8 @@ body {
     background-color: $color-grey;
     height: 100%;
 }
+
+.wrap {
+    margin: 0 auto;
+    max-width: $max-site-width;
+}

@@ -3,10 +3,11 @@ define([
 	'handlebars',
 	'ui/timer',
 	'ui/state',
+    'domain/match',
 	'text!templates/match.hbs'
 ],
 
-function (Flight, Handlebars, Timer, State, matchHtml) {
+function (Flight, Handlebars, Timer, State, MatchData, matchHtml) {
 
 	var TIMER_SELECTOR = '.js-timer',
 		STATE_SELECTOR = '.js-state';
@@ -16,6 +17,8 @@ function (Flight, Handlebars, Timer, State, matchHtml) {
 		this.template = Handlebars.compile(matchHtml);
 
         this.after('initialize', function() {
+            MatchData.setPlayers(this.attr.players);
+
             this.render();
 
             this.setupTimer();
@@ -28,11 +31,15 @@ function (Flight, Handlebars, Timer, State, matchHtml) {
         };
 
         this.setupTimer = function () {
-        	Timer.attachTo(TIMER_SELECTOR);
+        	Timer.attachTo(TIMER_SELECTOR, {
+                matchData: MatchData
+            });
         };
 
         this.setupState = function () {
-        	State.attachTo(STATE_SELECTOR);
+        	State.attachTo(STATE_SELECTOR, {
+                matchData: MatchData
+            });
         };
 	}
 	

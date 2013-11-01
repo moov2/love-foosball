@@ -1,10 +1,11 @@
 require([
     'jquery',
     'ui/setup',
-    'ui/match'
+    'ui/match',
+    'domain/match'
 ],
 
-function ($, Setup, Match) {
+function ($, Setup, Match, MatchData) {
 
     var ROOT_SELECTOR = '.js-app';
 
@@ -13,6 +14,8 @@ function ($, Setup, Match) {
 
 
     $(document).on('setup:startMatch', function (e, data) {
-        Match.attachTo(ROOT_SELECTOR);
+        Match.attachTo(ROOT_SELECTOR, {
+        	players: data.players
+        });
     });
 });
