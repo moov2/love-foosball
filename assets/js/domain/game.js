@@ -39,6 +39,7 @@ function () {
      */
     p.scored = function (player) {
         var didntScore = (this.players[0] === player) ? this.players[1] : this.players[0];
+        var playerScoredIndex = this.players.indexOf(player);
 
         // adds a goal to the player.
         player.score++;
@@ -46,6 +47,12 @@ function () {
         // remove the player that didn't score and add them to the end.
         this.players.splice(this.players.indexOf(didntScore), 1);
         this.players.push(didntScore);
+
+        // ensure the player who scored remains in the same position.
+        if (playerScoredIndex !== this.players.indexOf(player)) {
+            this.players[this.players.indexOf(player)] = this.players[playerScoredIndex];
+            this.players[playerScoredIndex] = player;
+        }
     };
 
     /**
