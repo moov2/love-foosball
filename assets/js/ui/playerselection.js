@@ -58,7 +58,13 @@ function (Flight, Handlebars, playersJson, playerSelectionHtml) {
                 contentWidth += $(this).outerWidth( true );
             });
 
-            this.select('playerList').css('width', (contentWidth + 20) + 'px');
+            contentWidth += 20;
+
+            if (contentWidth > $(window).width()) {
+                contentWidth = $(window).width();
+            }
+
+            this.select('playerList').css('width', contentWidth + 'px');
         };
 
         /**

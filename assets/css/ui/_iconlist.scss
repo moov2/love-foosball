@@ -15,6 +15,7 @@
         cursor: pointer;
         float: left;
         margin-right: $base-spacing-unit;
+        margin-bottom: $half-base-spacing-unit;
         min-width: $thumbnail-size;
 
         &:last-child {
