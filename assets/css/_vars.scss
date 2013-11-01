@@ -12,6 +12,12 @@ $base-spacing-unit: 1em;
 $half-base-spacing-unit: $base-spacing-unit / 2;
 
 /**
+ * Constrain the maximum size of the site.
+ */
+
+$max-site-width: 450px;
+
+/**
  * Colour palette.
  */
 
