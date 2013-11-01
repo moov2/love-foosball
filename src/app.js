@@ -12,6 +12,9 @@ var express = require('express'),
 	port = 3000;
 
 
+app.use('/assets', express.static(__dirname + '/assets'));
+
+
 app.get('/', function (req, res) {
 	res.send(layoutTemplate());
 });
