@@ -5,11 +5,27 @@ define([],
  */
 function () {
 
+        /**
+         * Mimimum duration of a game.
+         */
+    var DURATION_MINIMUM = 180;
+
     function Game (options) {
         this.initialise(options);
     }
 
     var p = Game.prototype = {};
+
+    /**
+     * Calculate the duration of the match in seconds.
+     */
+    p.calculateMatchDuration = function () {
+        this.duration = this.players.length * 60;
+
+        if (this.duration < DURATION_MINIMUM) {
+            this.duration = DURATION_MINIMUM;
+        }
+    };
 
     p.initialise = function (options) {
     	if (options && options.players) {
@@ -17,9 +33,32 @@ function () {
     	}
     };
 
+    /**
+     * Sets the order of the current players, this depicts the starting order.
+     */
+    p.setOrder = function () {
+        // later on the order will be determine by previous matches.
+        this.shufflePlayers();
+    };
+
     p.setPlayers = function (players) {
     	this.players = players;
-    	//setup game starting time, pity points etc
+
+        this.setOrder();
+        this.calculateMatchDuration();
+    };
+
+    /**
+     * Randomly sorts the players.
+     * Source: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/12646864#12646864
+     */
+    p.shufflePlayers = function () {
+        for (var i = this.players.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = this.players[i];
+            this.players[i] = this.players[j];
+            this.players[j] = temp;
+        }
     };
 
     return Game;

@@ -21,6 +21,7 @@
  * SELECTABLELIST............ Selectable list.
  * SCOREBUTTONS.............. The match view score buttons.
  * THUMBNAILS................ Player thumbnails.
+ * TEXT...................... Different CSS classes for text.
  */
 
 @import "vars";
@@ -50,3 +51,4 @@
 @import "ui/selectablelist";
 @import "ui/scorebuttons";
 @import "ui/thumbnails";
+@import "ui/text";

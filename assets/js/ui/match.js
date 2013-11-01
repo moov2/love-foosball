@@ -22,7 +22,6 @@ function (Flight, Handlebars, Timer, Scoreboard, Game, matchHtml) {
             this.render();
 
             this.setupTimer();
-
             this.setupScoreboard();
         });
 
@@ -42,6 +41,6 @@ function (Flight, Handlebars, Timer, Scoreboard, Game, matchHtml) {
             });
         };
 	}
-	
+
 	return flight.component(Match);
 });
