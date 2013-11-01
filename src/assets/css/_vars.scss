@@ -12,10 +12,21 @@ $base-spacing-unit: 1em;
 $half-base-spacing-unit: $base-spacing-unit / 2;
 
 /**
+ * Colour palette.
+ */
+
+$color-grey: #333;
+$color-rose: #e21b5a;
+$color-rose-dark: #9e0c39;
+$color-white: #fbffe3;
+$color-green: #83a300;
+
+/**
  * Default font styles.
  */
 
-$default-font-color: #333;
+$default-font-color: $color-white;
+$default-font-family: Origin, sans-serif;
 
 /**
  * Typography settings.
