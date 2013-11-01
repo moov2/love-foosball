@@ -7,8 +7,12 @@ function ($, Setup) {
 
     var ROOT_SELECTOR = '.js-app';
 
-    // this is the entry point...
-
+    // lets start with the game setup.
     Setup.attachTo(ROOT_SELECTOR);
 
+
+    $(document).on('setup:startMatch', function (e, data) {
+
+        // begin match...
+    });
 });

@@ -1,0 +1,24 @@
+/**
+ * -----------------------------------------------------------------------------
+ *   $SELECTABLELIST
+ * -----------------------------------------------------------------------------
+ */
+
+.selectable-list {
+    @extend .cf;
+
+    > li {
+        cursor: pointer;
+        float: left;
+        opacity: .3;
+        margin-right: $base-spacing-unit;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    > li.selected {
+        opacity: 1;
+    }
+}
