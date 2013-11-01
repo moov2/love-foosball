@@ -12,9 +12,11 @@
  * SPACING................... CSS to help with spacing elements.
  * ALIGNMENT................. CSS to help with alignment.
  *
+ * TYPOGRAPHY................ Font embedding.
  * MAIN...................... html, body elements.
  * HEADINGS.................. h1, h2, h3...
  * LISTS..................... Resets the ul to not show bullet points / have spacing.
+ * PARAGRAPHS................
  *
  * BUTTONS................... Various buttons.
  * ICONLIST.................. Circular player icon lists.
@@ -44,6 +46,7 @@
 @import "base/main";
 @import "base/headings";
 @import "base/lists";
+@import "base/paragraphs";
 
 
 @import "ui/buttons";
