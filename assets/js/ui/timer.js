@@ -58,7 +58,7 @@ function (Flight, Handlebars, timerHtml) {
          * Game has completed.
          */
         this.complete = function () {
-            console.log('completed');
+            this.trigger('timer:complete');
         };
 
         /**
