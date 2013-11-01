@@ -5,11 +5,27 @@ define([],
  */
 function () {
 
+        /**
+         * Minimum length of a game.
+         */
+    var DURATION_MINIMUM = 180;
+
     function Match () {
         this.players = [];
     }
 
     var p = Match.prototype = {};
+
+    /**
+     * Calculate the duration of the match in seconds.
+     */
+    p.calculateMatchDuration = function () {
+        this.duration = this.players.length * 60;
+
+        if (this.duration < DURATION_MINIMUM) {
+            this.duration = DURATION_MINIMUM;
+        }
+    };
 
     /**
      * Randomly sorts the players.
@@ -36,6 +52,7 @@ function () {
     	this.players = players;
 
         this.setOrder();
+        this.calculateMatchDuration();
     };
 
     return new Match();
