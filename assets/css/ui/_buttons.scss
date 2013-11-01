@@ -24,6 +24,7 @@ button:disabled,
     @include border-radius(5px);
 
     background-color: $color-rose-dark;
+    outline: none;
 
     -webkit-transition: background-color .2s ease-in;
        -moz-transition: background-color .2s ease-in;
