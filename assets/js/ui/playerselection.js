@@ -57,13 +57,12 @@ function (Flight, Handlebars, playersJson, playerSelectionHtml) {
          * Toggles the selected state of the player.
          */
         this.togglePlayerSelection = function (e) {
-            var $player = $(e.target);
+            var $player = (e.target.nodeName === 'IMG') ? $(e.target).parent() : $(e.target) ;
             var player = this.availablePlayers[$player.index()];
 
             if ($player.hasClass(CSS_SELECTED)) {
                 $player.removeClass(CSS_SELECTED);
                 this.selectedPlayers.splice(this.selectedPlayers.indexOf(player), 1);
-
             } else {
                 $player.addClass(CSS_SELECTED);
                 this.selectedPlayers.push(player);
