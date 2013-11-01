@@ -1,18 +1,18 @@
 [
     {
         "name": "Andrea Black",
-        "photo": "/assets/images/ab.png"
+        "photo": "/assets/images/andrea.png"
     },
     {
         "name": "Lawrence Dine",
-        "photo": "/assets/images/ld.png"
+        "photo": "/assets/images/lawrence.png"
     },
     {
         "name": "Peter Keating",
-        "photo": "/assets/images/pk.png"
+        "photo": "/assets/images/pete.png"
     },
     {
         "name": "Dan Thomas",
-        "photo": "/assets/images/dt.png"
+        "photo": "/assets/images/dan.png"
     }
 ]

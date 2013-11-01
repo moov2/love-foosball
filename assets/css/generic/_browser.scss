@@ -1,0 +1,39 @@
+/**
+ * -----------------------------------------------------------------------------
+ *   $BROWSER
+ * -----------------------------------------------------------------------------
+ */
+
+/**
+ * Cross browser styles for giving rounded corners to an element.
+ */
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
+/**
+ * Cross browser styles for box-sizing attribute that instructs element to include
+ * the padding as part of the width calculation.
+ */
+@mixin box-sizing() {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+/**
+ * Cross browser styles for applying a linear gradient as the background of an
+ * element.
+ */
+@mixin linear-gradient($fromColor, $toColor) {
+    background: $toColor;
+    background: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+    background: -webkit-linear-gradient(top, $fromColor, $toColor);
+    background:    -moz-linear-gradient(top, $fromColor, $toColor);
+    background:     -ms-linear-gradient(top, $fromColor, $toColor);
+    background:      -o-linear-gradient(top, $fromColor, $toColor);
+    background:         linear-gradient(top, $fromColor, $toColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{$fromColor}', endColorstr='#{$toColor}');
+}
