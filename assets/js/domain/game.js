@@ -5,6 +5,11 @@ define([],
  */
 function () {
 
+        /**
+         * Mimimum duration of a game.
+         */
+    var DURATION_MINIMUM = 180;
+
     function Game (options) {
         this.initialise(options);
     }
@@ -33,7 +38,7 @@ function () {
      */
     p.setOrder = function () {
         // later on the order will be determine by previous matches.
-        this.randomizePlayers();
+        this.shufflePlayers();
     };
 
     p.setPlayers = function (players) {

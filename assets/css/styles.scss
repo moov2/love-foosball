@@ -19,6 +19,7 @@
  * BUTTONS................... Various buttons.
  * SELECTABLELIST............ Selectable list.
  * THUMBNAILS................ Player thumbnails.
+ * TEXT...................... Different CSS classes for text.
  */
 
 @import "vars";
@@ -46,3 +47,4 @@
 @import "ui/buttons";
 @import "ui/selectablelist";
 @import "ui/thumbnails";
+@import "ui/text";
