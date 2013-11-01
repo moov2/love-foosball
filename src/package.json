@@ -3,6 +3,9 @@
 	"description": "Foosball fun for the Moov2 team",
 	"version": "0.0.1",
 	"private": true,
+    "scripts": {
+        "start": "node app"
+    },
 	"dependencies": {
 		"express": "3.4.4"
 	}
