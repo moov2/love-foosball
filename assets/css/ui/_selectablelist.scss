@@ -7,11 +7,15 @@
 .selectable-list {
     @extend .cf;
 
+    margin: 0 auto;
+
     > li {
+        @include box-sizing();
         cursor: pointer;
         float: left;
         opacity: .3;
         margin-right: $base-spacing-unit;
+        min-width: $thumbnail-size;
 
         &:last-child {
             margin-right: 0;
@@ -22,3 +26,4 @@
         opacity: 1;
     }
 }
+

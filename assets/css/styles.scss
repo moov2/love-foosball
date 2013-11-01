@@ -7,6 +7,10 @@
  *
  * NORMALIZE................. CSS reset courtesy of normalize. http://necolas.github.io/normalize.css/
  * RESET..................... Some generic resets.
+ * BROWSER................... Cross browser mixins.
+ * CLEARFIX.................. Micro clearfix.
+ * SPACING................... CSS to help with spacing elements.
+ * ALIGNMENT................. CSS to help with alignment.
  *
  * MAIN...................... html, body elements.
  * HEADINGS.................. h1, h2, h3...
@@ -27,7 +31,10 @@
 
 @import "vendor/normalize";
 @import "generic/reset";
+@import "generic/browser";
 @import "generic/clearfix";
+@import "generic/spacing";
+@import "generic/alignment";
 
 
 @import "base/typography";

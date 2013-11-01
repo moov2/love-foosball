@@ -5,9 +5,32 @@
  */
 
 .btn {
+    border: 0;
+    color: $color-white;
     cursor: pointer;
+    display: inline-block;
+    min-width: $base-spacing-unit * 20;
+    padding: $base-spacing-unit $base-spacing-unit * 2;
+    text-align: center;
 }
 
+button[disabled=disabled],
+button:disabled,
 .btn-disabled {
     opacity: .3;
+}
+
+.btn-primary {
+    @include border-radius(5px);
+
+    background-color: $color-rose-dark;
+
+    -webkit-transition: background-color .2s ease-in;
+       -moz-transition: background-color .2s ease-in;
+         -o-transition: background-color .2s ease-in;
+            transition: background-color .2s ease-in;
+
+    &:hover:enabled {
+        background-color: $color-rose;
+    }
 }

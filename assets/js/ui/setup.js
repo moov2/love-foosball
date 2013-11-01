@@ -10,12 +10,7 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
         /**
          * Selector for the player selection component.
          */
-    var PLAYER_SELECTION_SELECTOR = '.js-player-selection',
-
-        /**
-         * CSS for defining a disabled button.
-         */
-        CSS_DISABLED = 'btn-disabled';
+    var PLAYER_SELECTION_SELECTOR = '.js-player-selection';
 
     function Setup() {
 
@@ -77,9 +72,9 @@ function (Flight, Handlebars, PlayerSelection, setupHtml) {
             this.players = data.selectedPlayers;
 
             if (!this.validate()) {
-                this.select('startBtn').addClass(CSS_DISABLED);
+                this.select('startBtn').attr('disabled', 'disabled');
             } else {
-                this.select('startBtn').removeClass(CSS_DISABLED);
+                this.select('startBtn').removeAttr('disabled');
             }
         };
 

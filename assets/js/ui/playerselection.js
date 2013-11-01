@@ -51,6 +51,14 @@ function (Flight, Handlebars, playersJson, playerSelectionHtml) {
          */
         this.render = function () {
             this.$node.html(this.template({ players: this.availablePlayers}));
+
+            var contentWidth = 0;
+
+            this.select('playerListItem').each(function() {
+                contentWidth += $(this).outerWidth( true );
+            });
+
+            this.select('playerList').css('width', (contentWidth + 20) + 'px');
         };
 
         /**
