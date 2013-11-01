@@ -1,0 +1,9 @@
+{
+	"name": "love-foosball",
+	"description": "Foosball fun for the Moov2 team",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"express": "3.4.4"
+	}
+}
