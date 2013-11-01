@@ -1,3 +1,6 @@
 node_modules
 
 npm-debug.log
+
+# create CSS files by running `grunt sass` command.
+*.css
