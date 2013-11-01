@@ -32,7 +32,9 @@ function (Flight, Handlebars, Timer, State, matchHtml) {
         };
 
         this.setupState = function () {
-        	State.attachTo(STATE_SELECTOR);
+        	State.attachTo(STATE_SELECTOR, {
+                players: this.attr.players
+            });
         };
 	}
 	

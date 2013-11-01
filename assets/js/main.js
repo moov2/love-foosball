@@ -12,7 +12,9 @@ function ($, Setup, Match) {
     Setup.attachTo(ROOT_SELECTOR);
 
 
-    $(document).on('setup:startMatch', function (e, data) {
-        Match.attachTo(ROOT_SELECTOR);
+    $(document).on('setup:startMatch', function (e, players) {
+        Match.attachTo(ROOT_SELECTOR, {
+        	players: players
+        });
     });
 });
