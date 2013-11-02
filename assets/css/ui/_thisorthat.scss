@@ -1,0 +1,29 @@
+/**
+ * -----------------------------------------------------------------------------
+ *   $THISORTHAT
+ * -----------------------------------------------------------------------------
+ */
+
+.this-or-that {
+    @extend .cf;
+
+    margin-bottom: $base-spacing-unit * 2;
+    position: relative;
+
+    .this {
+        float: left;
+    }
+
+    .or {
+        left: 40%;
+        position: absolute;
+        right: 40%;
+        text-align: center;
+        z-index: 0;
+    }
+
+    .that {
+        float: right;
+    }
+}
+

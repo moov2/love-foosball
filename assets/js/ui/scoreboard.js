@@ -1,39 +1,42 @@
 define([
 	'flight',
 	'handlebars',
-	'ui/scorebuttons',
-	'text!templates/scoreboard.hbs',
-	'text!templates/waitingplayers.hbs'
+	'text!templates/scoreboard.hbs'
 ],
-function (Flight, Handlebars, ScoreButtons, scoreboardHtml, waitingPlayersHtml) {
+function (Flight, Handlebars, scoreboardHtml) {
 
-	var SCOREBUTTONS_SELECTOR = '.js-score-buttons';
 
 	function Scoreboard() {
 		this.template = Handlebars.compile(scoreboardHtml);
-		this.templatePlayerQueue = Handlebars.compile(waitingPlayersHtml);
 
 		this.defaultAttrs({
-            playerQueue: '.js-player-queue'
+            playerQueue: '.js-player-queue',
+            firstPlayer: '.js-first-player',
+            secondPlayer: '.js-second-player'
         });
 
 		this.after('initialize', function () {
 			this.render();
 
-			this.setupScorebuttons();
-
-			this.on(document, 'scorebuttons:playerscored', this.renderPlayerQueue);
+			this.on('click', {
+				'firstPlayer': this.firstPlayerScored,
+				'secondPlayer': this.secondPlayerScored
+			});
 		});
 
-		this.render = function () {
-			this.$node.html(this.template());
-			this.renderPlayerQueue();
+		/**
+		 * Handle the first player scoring a goal.
+		 */
+		this.firstPlayerScored = function () {
+			console.log('first player scored');
+			this.attr.game.scored(this.attr.game.players[0]);
+			this.render();
 		};
 
 		/**
 		 * Renders the player queue.
 		 */
-		this.renderPlayerQueue = function () {
+		this.getPlayerQueue = function () {
 			var waitingPlayers = [];
 
 			// gets the remaining players after the first two.
@@ -41,13 +44,24 @@ function (Flight, Handlebars, ScoreButtons, scoreboardHtml, waitingPlayersHtml) 
 				waitingPlayers.push(this.attr.game.players[i]);
 			}
 
-			this.select('playerQueue').html(this.templatePlayerQueue({ waitingPlayers: waitingPlayers }));
+			return waitingPlayers;
 		};
 
-		this.setupScorebuttons = function () {
-			ScoreButtons.attachTo(SCOREBUTTONS_SELECTOR, {
-				game: this.attr.game
-			});
+		this.render = function () {
+			this.$node.html(this.template({
+				firstPlayer: this.attr.game.players[0],
+				secondPlayer: this.attr.game.players[1],
+				waitingPlayers: this.getPlayerQueue()
+			}));
+		};
+
+		/**
+		 * Handles the second player scoring a goal.
+		 */
+		this.secondPlayerScored = function () {
+			console.log('second player scored');
+			this.attr.game.scored(this.attr.game.players[1]);
+			this.render();
 		};
 	}
 

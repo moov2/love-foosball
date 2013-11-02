@@ -1,7 +1,23 @@
 
-<div class="js-score-buttons">
+<div class="this-or-that">
+    <div class="this js-first-player">
+        <img src="{{firstPlayer.photo}}" class="thumbnail js-player-thumbnail" />
+        <div class="bubble js-player-score">{{ firstPlayer.score }}</div>
+    </div>
 
+    <div class="or text-thumbnail">vs</div>
+
+    <div class="that js-second-player">
+        <img src="{{secondPlayer.photo}}" class="thumbnail js-player-thumbnail" />
+        <div class="bubble js-player-score">{{ secondPlayer.score }}</div>
+    </div>
 </div>
 
 <p>Next Players:</p>
-<ul class="icon-list icon-list-small js-player-queue"></ul>
+<ul class="icon-list icon-list-small js-player-queue">
+{{#each waitingPlayers}}
+    <li>
+        <img src="{{photo}}" title="Player: {{name}}" alt="Player: {{name}}" class="thumbnail thumbnail-small" />
+    </li>
+{{/each}}
+</ul>

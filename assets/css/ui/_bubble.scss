@@ -1,0 +1,17 @@
+/**
+ * -----------------------------------------------------------------------------
+ *   $BUBBLE
+ * -----------------------------------------------------------------------------
+ */
+
+.bubble {
+    @include border-radius($bubble-height / 2);
+
+    background-color: $color-light-grey;
+    font-size: .8em;
+    height: $bubble-height;
+    line-height: $bubble-height;
+    margin: 0 auto;
+    text-align: center;
+    width: $bubble-width;
+}
