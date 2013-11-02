@@ -6,7 +6,8 @@ require.config({
         jquery: 'vendor/jquery',
         flight: 'vendor/flight',
         handlebars: 'vendor/handlebars',
-        text: 'vendor/text'
+        text: 'vendor/text',
+        underscore: 'vendor/underscore'
     },
 
     shim: {
@@ -16,6 +17,9 @@ require.config({
         'flight': {
             deps: ['jquery'],
             exports: 'flight'
+        },
+        'underscore': {
+            exports: '_'
         }
     }
 

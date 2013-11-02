@@ -24,6 +24,8 @@
  * SCOREBUTTONS.............. The match view score buttons.
  * THUMBNAILS................ Player thumbnails.
  * TEXT...................... Different CSS classes for text.
+ * BLOCKLIST................. List items stacked on top of each other.
+ * MEDIA..................... Media component made up of image and body text.
  */
 
 @import "vars";
@@ -55,3 +57,6 @@
 @import "ui/scorebuttons";
 @import "ui/thumbnails";
 @import "ui/text";
+@import "ui/blocklist";
+@import "ui/media";
+
