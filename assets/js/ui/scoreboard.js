@@ -5,6 +5,11 @@ define([
 ],
 function (Flight, Handlebars, scoreboardHtml) {
 
+		/**
+		 * CSS classes to highlight if player is winning of losing.
+		 */
+	var CSS_WINNING = 'winning',
+		CSS_LOSING = 'losing';
 
 	function Scoreboard() {
 		this.template = Handlebars.compile(scoreboardHtml);
@@ -12,6 +17,7 @@ function (Flight, Handlebars, scoreboardHtml) {
 		this.hasRendered = false;
 
 		this.defaultAttrs({
+			player: '.js-player',
             playerQueue: '.js-player-queue',
             firstPlayer: '.js-first-player',
             secondPlayer: '.js-second-player'
@@ -85,19 +91,30 @@ function (Flight, Handlebars, scoreboardHtml) {
 		 * attributes.
 		 */
 		this.updatePlayersInView = function () {
+			this.select('player').removeClass(CSS_LOSING).removeClass(CSS_WINNING);
+
 			// first player.
 			this.select('firstPlayer').find('.js-player-thumbnail').attr('src', this.getFirstPlayer().photo);
 			this.select('firstPlayer').find('.js-player-score').html(this.getFirstPlayer().score);
 
+			if (this.getFirstPlayer().winning) { this.select('firstPlayer').addClass(CSS_WINNING); }
+			if (this.getFirstPlayer().losing) { this.select('firstPlayer').addClass(CSS_LOSING); }
+
 			// second player
 			this.select('secondPlayer').find('.js-player-thumbnail').attr('src', this.getSecondPlayer().photo);
 			this.select('secondPlayer').find('.js-player-score').html(this.getSecondPlayer().score);
+
+			if (this.getSecondPlayer().winning) { this.select('secondPlayer').addClass(CSS_WINNING); }
+			if (this.getSecondPlayer().losing) { this.select('secondPlayer').addClass(CSS_LOSING); }
 
 			// update the player queue.
 			var waitingPlayers = this.getPlayerQueue();
 
 			for (var i = 0; i < waitingPlayers.length; i++) {
 				this.select('playerQueue').find('li:eq(' + i + ') > .js-player-thumbnail').attr('src', waitingPlayers[i].photo);
+
+				if (waitingPlayers[i].winning) { this.select('playerQueue').find('li:eq(' + i + ')').addClass(CSS_WINNING); }
+				if (waitingPlayers[i].losing) { this.select('playerQueue').find('li:eq(' + i + ')').addClass(CSS_LOSING); }
 			}
 		};
 	}

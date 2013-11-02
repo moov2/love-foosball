@@ -15,3 +15,11 @@
 .thumbnail-small {
     max-width: ($thumbnail-size / 3) * 2;
 }
+
+.winning .thumbnail {
+    border: 2px solid $color-green;
+}
+
+.losing .thumbnail {
+    border: 2px solid $color-rose;
+}

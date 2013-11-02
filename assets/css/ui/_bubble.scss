@@ -15,3 +15,11 @@
     text-align: center;
     width: $bubble-width;
 }
+
+.winning .bubble {
+    background-color: $color-green;
+}
+
+.losing .bubble {
+    background-color: $color-rose;
+}

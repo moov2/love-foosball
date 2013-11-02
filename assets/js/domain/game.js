@@ -55,6 +55,15 @@ function (_) {
             this.players[this.players.indexOf(player)] = this.players[playerScoredIndex];
             this.players[playerScoredIndex] = player;
         }
+
+        // reset the winning / losing flags
+        for (var i = 0; i < this.players.length; i++) { this.players[i].winning = this.players[i].losing = false; }
+
+        // determine whose winning and losing.
+        var leaderboard = _.sortBy(this.players, function (player) { return player.score }).reverse();
+
+        leaderboard[0].winning = leaderboard[0].score > leaderboard[1].score;
+        leaderboard[leaderboard.length - 1].losing = leaderboard[leaderboard.length - 1].score < leaderboard[leaderboard.length - 2].score;
     };
 
     /**
