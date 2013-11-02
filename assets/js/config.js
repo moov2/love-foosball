@@ -12,6 +12,10 @@ require.config({
     shim: {
         'handlebars': {
             exports: 'Handlebars'
+        },
+        'flight': {
+            deps: ['jquery'],
+            exports: 'flight'
         }
     }
 
