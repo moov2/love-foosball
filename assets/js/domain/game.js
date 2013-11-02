@@ -1,9 +1,11 @@
-define([],
+define([
+    'underscore'
+],
 
 /**
  * Module keeps track of the current game in progress.
  */
-function () {
+function (_) {
 
         /**
          * Mimimum duration of a game.
@@ -60,7 +62,7 @@ function () {
      */
     p.setOrder = function () {
         // later on the order will be determine by previous matches.
-        this.shufflePlayers();
+        this.players = _.shuffle(this.players);
     };
 
     p.setPlayers = function (players) {
@@ -78,19 +80,6 @@ function () {
     p.setStartingScores = function () {
         for (var i = 0; i < this.players.length; i++) {
             this.players[i].score = 0;
-        }
-    };
-
-    /**
-     * Randomly sorts the players.
-     * Source: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/12646864#12646864
-     */
-    p.shufflePlayers = function () {
-        for (var i = this.players.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = this.players[i];
-            this.players[i] = this.players[j];
-            this.players[j] = temp;
         }
     };
 
